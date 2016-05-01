@@ -80,6 +80,10 @@ public BasicMarioAIAgent(String s)
     setName(s);
 }
 
+public BasicMarioAIAgent(){
+    setName("Basic Bitch");
+}
+
 public boolean[] getAction()
 {
     return new boolean[Environment.numberOfKeys];

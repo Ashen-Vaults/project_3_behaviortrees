@@ -51,6 +51,10 @@ public ReplayAgent(String name)
     setName("Replay<" + name + ">");
 }
 
+public ReplayAgent(){
+    setName("Replay");
+}
+
 //this method should return mario state and position array
 //byte[] TODO: fix comment
 
