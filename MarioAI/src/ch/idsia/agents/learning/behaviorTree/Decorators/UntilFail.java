@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.idsia.agents.learning.behaviorTree;
+package ch.idsia.agents.learning.behaviorTree.Decorators;
 
-import ch.idsia.agents.Agent;
+import ch.idsia.agents.controllers.BasicMarioAIAgent;
 
 /**
- * Randomizes the order in which children are checked
+ *
  * @author Alexsh
  */
-public class RandomSelector extends CompositeTask{
+public class UntilFail extends Decorator {
     
-    public RandomSelector(Agent _agent) {
+    public UntilFail(BasicMarioAIAgent _agent) {
         super(_agent);
     }
     

@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.idsia.agents.learning.behaviorTree;
+package ch.idsia.agents.learning.behaviorTree.Decorators;
 
-import ch.idsia.agents.Agent;
+import ch.idsia.agents.controllers.BasicMarioAIAgent;
 
 /**
- * Randomizes the order in which the children of a sequence are executed
+ *
  * @author Alexsh
  */
-public class RandomSequence extends Sequence{
+public class Filter extends Decorator{
     
-    public RandomSequence(Agent _agent) {
+    public Filter(BasicMarioAIAgent _agent) {
         super(_agent);
     }
     

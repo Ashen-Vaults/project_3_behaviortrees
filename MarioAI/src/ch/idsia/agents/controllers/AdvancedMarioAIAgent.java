@@ -5,9 +5,27 @@
  */
 package ch.idsia.agents.controllers;
 
+import ch.idsia.agents.learning.behaviorTree.CompositeTasks.Sequence;
 import ch.idsia.agents.learning.behaviorTree.*;
+import ch.idsia.agents.learning.behaviorTree.CompositeTasks.CompositeTask;
+import ch.idsia.agents.learning.behaviorTree.CompositeTasks.RandomSelector;
+import ch.idsia.agents.learning.behaviorTree.CompositeTasks.RandomSequence;
+import ch.idsia.agents.learning.behaviorTree.CompositeTasks.Selector;
+import ch.idsia.agents.learning.behaviorTree.Decorators.Inverter;
+import ch.idsia.agents.learning.behaviorTree.Decorators.Repeat;
+import ch.idsia.agents.learning.behaviorTree.actions.Jump;
+import ch.idsia.agents.learning.behaviorTree.actions.MoveLeft;
+import ch.idsia.agents.learning.behaviorTree.actions.MoveRight;
+import ch.idsia.agents.learning.behaviorTree.actions.StopMoving;
+import ch.idsia.agents.learning.behaviorTree.conditions.IsEnemyNear;
+import ch.idsia.agents.learning.behaviorTree.conditions.IsNearLedge;
+import ch.idsia.benchmark.mario.engine.GlobalOptions;
+
 import ch.idsia.benchmark.mario.engine.sprites.Mario;
 import ch.idsia.benchmark.mario.environments.Environment;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import javafx.scene.paint.Stop;
 
 /**
  *
@@ -20,7 +38,11 @@ import ch.idsia.benchmark.mario.environments.Environment;
  */
 public class AdvancedMarioAIAgent extends BasicMarioAIAgent {
     
-    protected Sequence _myBehavior = new Sequence(this);
+    private ArrayList<Task> _myTasks;
+    
+    protected CompositeTask _myBehavior;
+    IsNearLedge _is = new IsNearLedge(this);
+    protected ArrayList<Sequence> _myBehaviors = new ArrayList<>();
     
     public AdvancedMarioAIAgent(String s) {
         super(s);
@@ -29,18 +51,75 @@ public class AdvancedMarioAIAgent extends BasicMarioAIAgent {
     
     public AdvancedMarioAIAgent(){
         super("AdvancedAI");
+        SetBehavior();
         reset();
     }
     
+    private void SetBehavior(){
+                
+        this. _myTasks = new ArrayList<>();
+        this._myTasks.add(new MoveRight(this));
+        this._myTasks.add(new IsNearLedge(this));
+        //this._myTasks.add(new Inverter(this, new IsNearLedge(this)));
+        this._myTasks.add(new Jump(this));
+        //this._myTasks.add(new Repeat(this,new Jump(this),5));
+        
+        this._myTasks.add(new IsEnemyNear(this));
+        this._myTasks.add(new Jump(this));
+        this._myTasks.add(new IsNearLedge(this));
+        this._myTasks.add(new StopMoving(this));
+
+
+
+        
+        
+        
+        //this._myTasks.add(new IsNearLedge(this));
+       // this._myTasks.add(new Jump(this));
+        //this._myTasks.add(new MoveLeft(this));
+        ///this._myTasks.add(new Jump(this));
+        
+       // this._myTasks.add(new IsEnemyNear(this));
+        
+        
+        
+        //this._myTasks.add(new IsEnemyNear(this));
+        //this._myTasks.add(new MoveLeft(this));
+        
+        //this._myTasks.add(new IsEnemyNear(this));
+        //this._myTasks.add(new MoveRight(this));
+               
+        Sequence _sequence = new Sequence(this, this._myTasks);
+        
+        ArrayList _behavior = new ArrayList<>();
+        _behavior.add(new Repeat(this, _sequence, 10));
+
+
+        
+        //this._myBehavior = new Sequence(this, _behavior);
+       this._myBehavior = _sequence;
+        
+        
+        
+ 
+        
+    }
+    
     public boolean[] getAction(){
-        action[Mario.KEY_SPEED] = action[Mario.KEY_JUMP] = isMarioAbleToJump || !isMarioOnGround;
+        this._myBehavior.run();
+        
+        
+        
+       // _is.run();
+        
         return action;
     }
 
     public void reset(){
         
-        action = new boolean[Environment.numberOfKeys];
-        action[Mario.KEY_RIGHT] = true;
-        action[Mario.KEY_SPEED] = true;
+        
+  //      action = new boolean[Environment.numberOfKeys];
+//        action[Mario.KEY_RIGHT] = true;
+   //     action[Mario.KEY_SPEED] = true;
     }
 }

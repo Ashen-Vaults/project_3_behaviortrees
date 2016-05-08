@@ -31,6 +31,7 @@ import ch.idsia.agents.Agent;
 import ch.idsia.agents.AgentsPool;
 import ch.idsia.agents.controllers.*;
 import ch.idsia.agents.controllers.ScaredAgent;
+import ch.idsia.benchmark.mario.engine.GlobalOptions;
 import ch.idsia.benchmark.tasks.BasicTask;
 import ch.idsia.tools.MarioAIOptions;
 
@@ -45,7 +46,8 @@ public static void main(String[] args)
 //        final String argsString = "-vis on";
     
     final Agent agent = new AdvancedMarioAIAgent();
-    
+    //final Agent agent = new ScaredShooty();
+    GlobalOptions.changeScale2x();
     
     final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
     

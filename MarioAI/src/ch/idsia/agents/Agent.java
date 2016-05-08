@@ -42,6 +42,8 @@ boolean[] getAction();
 
 void integrateObservation(Environment environment);
 
+///Environment getEnvironment();
+
 void giveIntermediateReward(float intermediateReward);
 
 /**

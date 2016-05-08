@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.idsia.agents.learning.behaviorTree;
+package ch.idsia.agents.learning.behaviorTree.CompositeTasks;
 
 import ch.idsia.agents.Agent;
+import ch.idsia.agents.controllers.BasicMarioAIAgent;
+import ch.idsia.agents.learning.behaviorTree.Task;
+import java.util.ArrayList;
 
 /**
  * Runs all the children tasks in a sequence
@@ -14,8 +17,8 @@ import ch.idsia.agents.Agent;
  */
 public class ParallelSequence extends Sequence{
     
-    public ParallelSequence(Agent _agent) {
-        super(_agent);
+    public ParallelSequence(BasicMarioAIAgent _agent, ArrayList<Task> _tasks) {
+        super(_agent, _tasks);
     }
     
 }

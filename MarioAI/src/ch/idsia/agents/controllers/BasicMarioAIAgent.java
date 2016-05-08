@@ -39,13 +39,69 @@ import ch.idsia.benchmark.mario.environments.Environment;
  */
 public class BasicMarioAIAgent implements Agent
 {
-protected boolean action[] = new boolean[Environment.numberOfKeys];
+public boolean action[] = new boolean[Environment.numberOfKeys];
 protected String name = "Instance_of_BasicAIAgent._Change_this_name";
 
+    public byte[][] getLevelScene() {
+        return levelScene;
+    }
+
+    public byte[][] getEnemies() {
+        return enemies;
+    }
+
+    public byte[][] getMergedObservation() {
+        return mergedObservation;
+    }
+
+    public int[] getMarioState() {
+        return marioState;
+    }
+
+    public int getMarioStatus() {
+        return marioStatus;
+    }
+
+    public int getMarioMode() {
+        return marioMode;
+    }
+
+    public int getGetKillsTotal() {
+        return getKillsTotal;
+    }
+
+    public int getGetKillsByFire() {
+        return getKillsByFire;
+    }
+
+    public int getGetKillsByStomp() {
+        return getKillsByStomp;
+    }
+
+    public int getGetKillsByShell() {
+        return getKillsByShell;
+    }
+
+    public int getReceptiveFieldWidth() {
+        return receptiveFieldWidth;
+    }
+
+    public int getReceptiveFieldHeight() {
+        return receptiveFieldHeight;
+    }
+
+    public int getzLevelScene() {
+        return zLevelScene;
+    }
+
 /*final*/
+    public int getzLevelEnemies() {
+        return zLevelEnemies;
+    }
+
 protected byte[][] levelScene;
 /*final */
-protected byte[][] enemies;
+public byte[][] enemies;
 protected byte[][] mergedObservation;
 
 protected float[] marioFloatPos = null;
@@ -55,6 +111,22 @@ protected int[] marioState = null;
 
 protected int marioStatus;
 protected int marioMode;
+
+    public boolean isIsMarioOnGround() {
+        return isMarioOnGround;
+    }
+
+    public boolean isIsMarioAbleToJump() {
+        return isMarioAbleToJump;
+    }
+
+    public boolean isIsMarioAbleToShoot() {
+        return isMarioAbleToShoot;
+    }
+
+    public boolean isIsMarioCarrying() {
+        return isMarioCarrying;
+    }
 protected boolean isMarioOnGround;
 protected boolean isMarioAbleToJump;
 protected boolean isMarioAbleToShoot;
@@ -88,6 +160,22 @@ public boolean[] getAction()
 {
     return new boolean[Environment.numberOfKeys];
 
+}
+
+public float[] getMarioFloatPos(){
+    return this.marioFloatPos;
+}
+
+public float[] getEnemiesFloatPos(){
+    return this.enemiesFloatPos;
+}
+
+public int getMarioEgoRow(){
+    return this.marioEgoRow;
+}
+
+public int getMarioEgoCol(){
+    return this.marioEgoCol;
 }
 
 public void integrateObservation(Environment environment)
@@ -135,7 +223,7 @@ public void setObservationDetails(final int rfWidth, final int rfHeight, final i
     marioEgoRow = egoRow;
     marioEgoCol = egoCol;
 }
-
+ 
 @Deprecated
 public boolean[] getAction(Environment observation)
 {
@@ -195,4 +283,6 @@ public int getReceptiveFieldCellValue(int x, int y)
 //        getKillsByStomp = marioState[8];
 //        getKillsByShell = marioState[9];
 //    }
+
+
 }

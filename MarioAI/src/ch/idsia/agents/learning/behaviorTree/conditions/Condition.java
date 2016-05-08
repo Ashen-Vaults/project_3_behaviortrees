@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.idsia.agents.learning.behaviorTree;
+package ch.idsia.agents.learning.behaviorTree.conditions;
 
 import ch.idsia.agents.Agent;
-import java.util.ArrayList;
+import ch.idsia.agents.controllers.BasicMarioAIAgent;
+import ch.idsia.agents.learning.behaviorTree.Task;
 
 /**
  *
  * @author Alexsh
  */
-public class CompositeTask extends Task {
-    
-    protected ArrayList<Task> myTasks = new ArrayList<>();
+public abstract class Condition extends Task {
 
-    public CompositeTask(Agent _agent) {
+
+    public Condition(BasicMarioAIAgent _agent) {
         super(_agent);
     }
 
