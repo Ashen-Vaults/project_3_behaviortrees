@@ -22,18 +22,6 @@ public class Sequence extends CompositeTask {
     
     public Sequence(BasicMarioAIAgent _agent, ArrayList<Task> _tasks) {
         super(_agent, _tasks);
-        
-        if(this.myTasks!=null){
-            this._currentTask = this.myTasks.iterator();
-            
-            if(this._currentTask!=null){
-                if(this._currentTask.hasNext()){
-                    _current = this._currentTask.next();
-                    System.out.println("~Current Task: " + _current.getClass().getSimpleName());
-                }
-            }
-            
-        }
     }
 
     @Override

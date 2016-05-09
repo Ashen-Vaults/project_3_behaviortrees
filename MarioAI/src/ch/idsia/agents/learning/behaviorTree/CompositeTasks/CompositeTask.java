@@ -24,6 +24,17 @@ public class CompositeTask extends Task {
     public CompositeTask(BasicMarioAIAgent _agent, ArrayList<Task> _tasks) {
         super(_agent);
         this.myTasks = _tasks;
+                if(this.myTasks!=null){
+            this._currentTask = this.myTasks.iterator();
+            
+            if(this._currentTask!=null){
+                if(this._currentTask.hasNext()){
+                    _current = this._currentTask.next();
+                    System.out.println("~Current Task: " + _current.getClass().getSimpleName());
+                }
+            }
+            
+        }
     }
 
     @Override

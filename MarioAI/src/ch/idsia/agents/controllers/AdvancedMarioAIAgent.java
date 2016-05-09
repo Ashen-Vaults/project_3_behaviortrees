@@ -38,9 +38,9 @@ import javafx.scene.paint.Stop;
  */
 public class AdvancedMarioAIAgent extends BasicMarioAIAgent {
     
-    private ArrayList<Task> _myTasks;
+
     
-    protected CompositeTask _myBehavior;
+    protected BehaviorTree _myBehavior;
     IsNearLedge _is = new IsNearLedge(this);
     protected ArrayList<Sequence> _myBehaviors = new ArrayList<>();
     
@@ -57,17 +57,6 @@ public class AdvancedMarioAIAgent extends BasicMarioAIAgent {
     
     private void SetBehavior(){
                 
-        this. _myTasks = new ArrayList<>();
-        this._myTasks.add(new MoveRight(this));
-        this._myTasks.add(new IsNearLedge(this));
-        //this._myTasks.add(new Inverter(this, new IsNearLedge(this)));
-        this._myTasks.add(new Jump(this));
-        //this._myTasks.add(new Repeat(this,new Jump(this),5));
-        
-        this._myTasks.add(new IsEnemyNear(this));
-        this._myTasks.add(new Jump(this));
-        this._myTasks.add(new IsNearLedge(this));
-        this._myTasks.add(new StopMoving(this));
 
 
 
@@ -89,17 +78,17 @@ public class AdvancedMarioAIAgent extends BasicMarioAIAgent {
         //this._myTasks.add(new IsEnemyNear(this));
         //this._myTasks.add(new MoveRight(this));
                
-        Sequence _sequence = new Sequence(this, this._myTasks);
+        //Sequence _sequence = new Sequence(this, this._myTasks);
         
-        ArrayList _behavior = new ArrayList<>();
-        _behavior.add(new Repeat(this, _sequence, 10));
+       // ArrayList _behavior = new ArrayList<>();
+       // _behavior.add(new Repeat(this, _sequence, 10));
 
 
         
         //this._myBehavior = new Sequence(this, _behavior);
-       this._myBehavior = _sequence;
+      // this._myBehavior = _sequence;
         
-        
+        this._myBehavior = new TraverseLevel(this);
         
  
         
