@@ -5,6 +5,8 @@
  */
 package ch.idsia.agents.controllers;
 
+import ch.idsia.agents.learning.behaviorTree.Trees.MarioBehaviorTree;
+import ch.idsia.agents.learning.behaviorTree.Trees.BehaviorTree;
 import ch.idsia.agents.learning.behaviorTree.CompositeTasks.Sequence;
 import ch.idsia.agents.learning.behaviorTree.*;
 import ch.idsia.agents.learning.behaviorTree.CompositeTasks.CompositeTask;
@@ -97,12 +99,13 @@ public class AdvancedMarioAIAgent extends BasicMarioAIAgent {
     
     public boolean[] getAction(){
         if(this._myBehavior!=null){
-            //_status = 
+            _status = 
                     this._myBehavior.run();
             
-            //if(_status){
+            if(!_status){
+                
                // System.out.println("Status of BT: " + _status);
-            //}
+            }
         }
         return action;
     }
@@ -114,4 +117,6 @@ public class AdvancedMarioAIAgent extends BasicMarioAIAgent {
 //        action[Mario.KEY_RIGHT] = true;
    //     action[Mario.KEY_SPEED] = true;
     }
+    
+    
 }

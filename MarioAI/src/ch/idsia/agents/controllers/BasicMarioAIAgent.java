@@ -197,6 +197,10 @@ public void integrateObservation(Environment environment)
     marioMode = marioState[1];
     isMarioOnGround = marioState[2] == 1;
     isMarioAbleToJump = marioState[3] == 1;
+    
+    
+    //System.out.println("Jump? " + isMarioAbleToJump);
+    
     isMarioAbleToShoot = marioState[4] == 1;
     isMarioCarrying = marioState[5] == 1;
     getKillsTotal = marioState[6];

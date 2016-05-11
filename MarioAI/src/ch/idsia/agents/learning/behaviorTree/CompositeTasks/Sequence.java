@@ -26,25 +26,31 @@ public class Sequence extends CompositeTask {
 
     @Override
     public boolean run() {
-        if(this._currentTaskIter!=null){
+        
+        //System.out.println("Current " + this._current.getClass().getSimpleName());
+        
+        if(this._currentTaskIter!=null && _current!=null){
             
             
             //if(this._currentTask.hasNext()){   
                 
                 //if the current task the last task in the list; we are done
-                if(_current == myTasks.get(myTasks.size()-1)){
-                //if(!this._currentTaskIter.hasNext()){
+                //if(_current == myTasks.get(myTasks.size()-1)){
+                if(!this._currentTaskIter.hasNext()){
                     //System.out.println("LAST TASK:" + _current.getClass().getSimpleName());
                     //return true;
-                    System.out.println("Running:" + _current.getClass().getSimpleName()); 
-                    //return _current.run();                                      
-                    return true;
+                    //System.out.println("Running:" + _current.getClass().getSimpleName()); 
+                    return _current.run();                                      
+                    //return true;
                 }
 
                // if the current task's run return true, go to the next task
-                if(_current.run()){
-                    System.out.println("Running:" + _current.getClass().getSimpleName());
-                    _current = this._currentTaskIter.next();
+                if(_current.run()){                    
+                    if(this._currentTaskIter.hasNext()){
+                        System.out.println("Task Succeed:" + _current.getClass().getSimpleName());
+                        _current = this._currentTaskIter.next();
+                        System.out.println(" |\t| Next Task: "+_current.getClass().getSimpleName());
+                    }
                     return true; //if the current task's run doesnt run, we are done
                
                 

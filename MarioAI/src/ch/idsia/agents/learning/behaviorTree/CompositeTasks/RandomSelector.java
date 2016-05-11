@@ -22,12 +22,13 @@ public class RandomSelector extends CompositeTask{
     }
     @Override
     public boolean run(){
-        while(true){
+        //while(true){
             this._current = this.myTasks.get(_random.nextInt(this.myTasks.size()));
             System.out.println("Running Task: " + this._current.getClass().getSimpleName());
             if(this._current.run()){
                 return true;
             }
+            return false;
         }
-    }
+   // }
 }

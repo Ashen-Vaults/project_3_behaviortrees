@@ -17,20 +17,22 @@ import ch.idsia.benchmark.mario.engine.sprites.Mario;
 public class MoveRight extends Task{
 
     public MoveRight(BasicMarioAIAgent _agent) { 
-        super(_agent);
+        super(_agent, null);
     }
 
     @Override
     public boolean run() {  
         
-        //if(_agent.getReceptiveFieldCellValue(_agent.getMarioEgoRow()+1, _agent.getMarioEgoCol()) == 0){
+        if(_agent.getReceptiveFieldCellValue(_agent.getMarioEgoRow(), _agent.getMarioEgoCol() + 1) == 0 || 
+                _agent.getReceptiveFieldCellValue(_agent.getMarioEgoRow()+1, _agent.getMarioEgoCol()) == 0 ){
             //System.out.println("I will move right " + _agent.getReceptiveFieldCellValue(_agent.getMarioEgoRow(), _agent.getMarioEgoCol()+1));
             this._agent.action[Mario.KEY_LEFT] = false;
             this._agent.action[Mario.KEY_RIGHT] = true;
+            //this._agent.action[Mario.KEY_SPEED] = false;
             return true;
-        //} 
-       // this._agent.action[Mario.KEY_RIGHT] = false;
-        //return false;
+        } 
+        this._agent.action[Mario.KEY_RIGHT] = false;
+        return false;
     }
     
 }

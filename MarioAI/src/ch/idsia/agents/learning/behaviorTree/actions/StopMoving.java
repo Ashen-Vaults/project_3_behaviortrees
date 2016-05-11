@@ -16,13 +16,16 @@ import ch.idsia.benchmark.mario.engine.sprites.Mario;
 public class StopMoving extends Task{
 
     public StopMoving(BasicMarioAIAgent _agent) {
-        super(_agent);
+        super(_agent, null);
     }
 
     @Override
     public boolean run() {
+        System.out.println("STOPP");
         this._agent.action[Mario.KEY_LEFT] = false;
         this._agent.action[Mario.KEY_RIGHT] = false;
+        this._agent.action[Mario.KEY_SPEED] = false;
+        this._agent.action[Mario.KEY_JUMP] = false;
         return true;
     }
     

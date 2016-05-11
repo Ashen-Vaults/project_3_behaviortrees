@@ -22,7 +22,7 @@ public class CompositeTask extends Task {
     protected Task _current;
  
     public CompositeTask(BasicMarioAIAgent _agent, ArrayList<Task> _tasks) {
-        super(_agent);
+        super(_agent, null);
         this.myTasks = _tasks;
         if(this.myTasks!=null){
             this._currentTaskIter = this.myTasks.iterator();
@@ -30,7 +30,7 @@ public class CompositeTask extends Task {
             if(this._currentTaskIter!=null){
                 if(this._currentTaskIter.hasNext()){
                     _current = this._currentTaskIter.next();
-                    System.out.println("~Current Task: " + _current.getClass().getSimpleName());
+                    System.out.println("\n~~~~Current Task: " + _current.getClass().getSimpleName());
                 }
             }
             

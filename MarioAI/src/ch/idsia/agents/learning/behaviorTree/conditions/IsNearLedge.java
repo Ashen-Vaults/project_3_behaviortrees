@@ -26,7 +26,12 @@ public class IsNearLedge extends Condition{
         
       //  nearLedge = _agent.getLevelScene()[this._agent.getReceptiveFieldWidth() / 2][this._agent.getReceptiveFieldHeight() / 2 + 1] != 0 &&
       //          _agent.getLevelScene()[this._agent.getReceptiveFieldWidth() / 2 / 2 + 1][this._agent.getReceptiveFieldHeight() / 2 + 1] == 0;
-        
+      
+      
+      nearLedge = (_agent.getReceptiveFieldCellValue(_agent.getMarioEgoRow(), _agent.getMarioEgoCol()+1) != 0);
+     // System.out.println("Near Ledge: " + nearLedge);
+      
+      
       if(nearLedge)
         System.out.println("NEAR LEDGE " + nearLedge + " " + GeneralizerLevelScene.ZLevelGeneralization( _agent.getLevelScene()[this._agent.getReceptiveFieldWidth() / 2][this._agent.getReceptiveFieldHeight() / 2 + 1],0));
         

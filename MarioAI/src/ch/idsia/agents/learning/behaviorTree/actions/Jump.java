@@ -17,18 +17,20 @@ import ch.idsia.benchmark.mario.engine.sprites.Mario;
 public class Jump extends Task{
 
     public Jump(BasicMarioAIAgent _agent) { 
-        super(_agent);
+        super(_agent, null);
     }
 
     @Override
     public boolean run() {
-        if(this._agent.isIsMarioAbleToJump()){
-            System.out.println("I  jump");
-            this._agent.action[Mario.KEY_SPEED] = this._agent.action[Mario.KEY_JUMP] = this._agent.isIsMarioAbleToJump() || !this._agent.isIsMarioOnGround();            
+        if(this._agent.isIsMarioOnGround()){
+            //System.out.println("I  jump");
+            this._agent.action[Mario.KEY_SPEED] = this._agent.action[Mario.KEY_JUMP] = this._agent.isIsMarioAbleToJump();            
             return true;
         }
-        System.out.println("I CANNOT jump");
-        return false;
+        //System.out.println("I CANNOT jump");
+        //zzzzzzzzzzzthis._agent.action[Mario.KEY_SPEED] = false;
+        this._agent.action[Mario.KEY_JUMP] = false;            
+       return false;
     }
     
 }

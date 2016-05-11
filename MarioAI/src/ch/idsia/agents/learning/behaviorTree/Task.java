@@ -19,7 +19,7 @@ public abstract class Task {
     public boolean getStatus(){
         return _status;
     }
-    public Task(BasicMarioAIAgent _agent){
+    public Task(BasicMarioAIAgent _agent, BlackBoard _blackBoard){
         System.out.println("Created Task: " + this.getClass().getSimpleName());
         this._agent = _agent;
     }

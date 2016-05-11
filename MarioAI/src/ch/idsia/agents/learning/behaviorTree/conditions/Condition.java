@@ -17,7 +17,7 @@ public abstract class Condition extends Task {
 
 
     public Condition(BasicMarioAIAgent _agent) {
-        super(_agent);
+        super(_agent, null);
     }
 
     @Override

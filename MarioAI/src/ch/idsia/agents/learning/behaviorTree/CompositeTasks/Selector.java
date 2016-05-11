@@ -25,7 +25,7 @@ public class Selector extends CompositeTask {
     
     @Override
     public boolean run(){
-        
+        //System.out.println("Selector Running " + this._current.getClass().getSimpleName());
         for(int i=0;i<=this.myTasks.size()-1;i++){
             this._current = this.myTasks.get(i);
             if(this._current.run()){

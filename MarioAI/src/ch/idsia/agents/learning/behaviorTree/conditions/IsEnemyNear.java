@@ -31,7 +31,18 @@ public class IsEnemyNear extends Condition {
         int x = marioEgoRow;
         int y = marioEgoCol;
         //System.out.println(this.getClass().getSimpleName() + " STATUS: " + this.getStatus());
-        return isCreature(this._agent.enemies[x][y + 2]) || isCreature(this._agent.enemies[x][y + 1]);
+        //return isCreature(this._agent.enemies[x][y + 2]) || isCreature(this._agent.enemies[x][y + 1]);
+        
+        if((isCreature(_agent.getEnemiesCellValue(_agent.getMarioEgoRow(), _agent.getMarioEgoCol() -1)))   ||
+            (isCreature(_agent.getEnemiesCellValue(_agent.getMarioEgoRow(), _agent.getMarioEgoCol())))     ||
+            (isCreature(_agent.getEnemiesCellValue(_agent.getMarioEgoRow(), _agent.getMarioEgoCol() + 1))) ||
+            (isCreature(_agent.getEnemiesCellValue(_agent.getMarioEgoRow(), _agent.getMarioEgoCol() + 2)))   ){
+            System.out.println("Enemy is near");
+            return true;
+        }else{
+            System.out.println("Enemy is NOT near");
+            return false;
+        }        
         
     }
     

@@ -17,14 +17,21 @@ import ch.idsia.benchmark.mario.engine.sprites.Mario;
 public class MoveLeft extends Task{
 
     public MoveLeft(BasicMarioAIAgent _agent) { 
-        super(_agent);
+        super(_agent, null);
     }
 
     @Override
-    public boolean run() {    
-        this._agent.action[Mario.KEY_RIGHT] = false;
-        this._agent.action[Mario.KEY_LEFT] = true;
-        return true;
+    public boolean run() {   
+        if(_agent.getReceptiveFieldCellValue(_agent.getMarioEgoRow()-1, _agent.getMarioEgoCol()) == 0){
+            System.out.println("I will move LEFT " + _agent.getReceptiveFieldCellValue(_agent.getMarioEgoRow()-1, _agent.getMarioEgoCol()));
+            this._agent.action[Mario.KEY_RIGHT] = false;
+            this._agent.action[Mario.KEY_LEFT] = true;
+
+            return true;
+        } 
+        this._agent.action[Mario.KEY_LEFT] = false;
+        return false;
+
     }
     
 }

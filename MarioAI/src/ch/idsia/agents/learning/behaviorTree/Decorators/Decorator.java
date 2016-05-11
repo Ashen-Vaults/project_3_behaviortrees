@@ -20,7 +20,7 @@ public abstract class Decorator extends Task
     protected Task _childTask;
 
     public Decorator(BasicMarioAIAgent _agent, Task _task) {
-        super(_agent);
+        super(_agent, null);
         _childTask = _task;
     }
 
