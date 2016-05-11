@@ -31,8 +31,8 @@ public class RandomSequence extends Sequence{
         Collections.shuffle(this.myTasks);
         while(this._current != this.myTasks.get(this.myTasks.size()-1)){
             
-             if(this._currentTask.hasNext())
-                this._current = this._currentTask.next();
+             if(this._currentTaskIter.hasNext())
+                this._current = this._currentTaskIter.next();
              if(!this._current.run()) return false;
         }
         return true;

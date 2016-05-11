@@ -34,7 +34,9 @@ public abstract class BehaviorTree extends Task {
      
      @Override
      public boolean run(){
-         return this._myComposite.run();
+         if(this._myComposite!=null)
+            return this._myComposite.run();
+         return false;
      }
      
      CompositeTask getMyCompositeTask(){

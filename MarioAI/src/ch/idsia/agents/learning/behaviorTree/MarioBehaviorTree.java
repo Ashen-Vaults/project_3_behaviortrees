@@ -31,13 +31,28 @@ public class MarioBehaviorTree extends BehaviorTree{
         
         //this._myTasks.add(new IsEnemyNear(_agent));
         //this._myTasks.add(new Jump(_agent));
-        this._myTasks.add(new Inverter(_agent, new IsEnemyNear(_agent)));
+        //this._myTasks.add(new Inverter(_agent, new IsEnemyNear(_agent)));
+        //this._myTasks.add(new Jump(_agent));
+        
+        
+        this._myTasks.add(new MoveRight(_agent));
+        this._myTasks.add(new IsNearLedge(_agent));
+       // this._myTasks.add(new MoveRight(_agent));
+        this._myTasks.add(new Jump(_agent));
+        this._myTasks.add(new StopMoving(_agent));
+      //  this._myTasks.add(new IsNearLedge(_agent));
+     //  this._myTasks.add(new Jump(_agent));
+        //this._myTasks.add(new IsNearLedge(_agent));
+        //this._myTasks.add(new Jump(_agent));
+
         //this._myTasks.add(new StopMoving(_agent));
         
-        this._myTasks.add(new TraverseLevel(_agent));
+        //this._myTasks.add(new TraverseLevel(_agent));
         
         
-        this._myComposite = new Selector(_agent,this._myTasks);
+        this._myComposite = new Sequence(_agent,this._myTasks);
         
     }   
+    
+    
 }

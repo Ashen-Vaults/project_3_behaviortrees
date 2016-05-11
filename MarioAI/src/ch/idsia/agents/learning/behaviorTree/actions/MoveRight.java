@@ -21,10 +21,16 @@ public class MoveRight extends Task{
     }
 
     @Override
-    public boolean run() {             
-        this._agent.action[Mario.KEY_LEFT] = false;
-        this._agent.action[Mario.KEY_RIGHT] = true;
-        return true;
+    public boolean run() {  
+        
+        //if(_agent.getReceptiveFieldCellValue(_agent.getMarioEgoRow()+1, _agent.getMarioEgoCol()) == 0){
+            //System.out.println("I will move right " + _agent.getReceptiveFieldCellValue(_agent.getMarioEgoRow(), _agent.getMarioEgoCol()+1));
+            this._agent.action[Mario.KEY_LEFT] = false;
+            this._agent.action[Mario.KEY_RIGHT] = true;
+            return true;
+        //} 
+       // this._agent.action[Mario.KEY_RIGHT] = false;
+        //return false;
     }
     
 }

@@ -23,10 +23,11 @@ public class Jump extends Task{
     @Override
     public boolean run() {
         if(this._agent.isIsMarioAbleToJump()){
+            System.out.println("I  jump");
             this._agent.action[Mario.KEY_SPEED] = this._agent.action[Mario.KEY_JUMP] = this._agent.isIsMarioAbleToJump() || !this._agent.isIsMarioOnGround();            
             return true;
         }
-        System.out.println("I CANOT jump");
+        System.out.println("I CANNOT jump");
         return false;
     }
     

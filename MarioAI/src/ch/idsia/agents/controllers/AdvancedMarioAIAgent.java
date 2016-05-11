@@ -41,7 +41,6 @@ public class AdvancedMarioAIAgent extends BasicMarioAIAgent {
 
     
     protected BehaviorTree _myBehavior;
-    IsNearLedge _is = new IsNearLedge(this);
     protected ArrayList<Sequence> _myBehaviors = new ArrayList<>();
     
     public AdvancedMarioAIAgent(String s) {
@@ -88,19 +87,23 @@ public class AdvancedMarioAIAgent extends BasicMarioAIAgent {
         //this._myBehavior = new Sequence(this, _behavior);
       // this._myBehavior = _sequence;
         
-        this._myBehavior = new TraverseLevel(this);
+        this._myBehavior = new MarioBehaviorTree(this);
         
  
         
     }
     
+    private boolean _status;
+    
     public boolean[] getAction(){
-        this._myBehavior.run();
-        
-        
-        
-       // _is.run();
-        
+        if(this._myBehavior!=null){
+            //_status = 
+                    this._myBehavior.run();
+            
+            //if(_status){
+               // System.out.println("Status of BT: " + _status);
+            //}
+        }
         return action;
     }
 

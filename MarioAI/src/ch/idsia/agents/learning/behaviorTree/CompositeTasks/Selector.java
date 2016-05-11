@@ -29,7 +29,7 @@ public class Selector extends CompositeTask {
         for(int i=0;i<=this.myTasks.size()-1;i++){
             this._current = this.myTasks.get(i);
             if(this._current.run()){
-                System.out.println("Selector Running " + this._current.getClass().getSimpleName());
+                //System.out.println("Selector Running " + this._current.getClass().getSimpleName());
                 return true;
             }   
         }

@@ -18,18 +18,18 @@ import java.util.Iterator;
 public class CompositeTask extends Task {
     
     public ArrayList<Task> myTasks = new ArrayList<>();
-    protected Iterator<Task> _currentTask = myTasks.iterator();
+    protected Iterator<Task> _currentTaskIter = myTasks.iterator();
     protected Task _current;
  
     public CompositeTask(BasicMarioAIAgent _agent, ArrayList<Task> _tasks) {
         super(_agent);
         this.myTasks = _tasks;
-                if(this.myTasks!=null){
-            this._currentTask = this.myTasks.iterator();
+        if(this.myTasks!=null){
+            this._currentTaskIter = this.myTasks.iterator();
             
-            if(this._currentTask!=null){
-                if(this._currentTask.hasNext()){
-                    _current = this._currentTask.next();
+            if(this._currentTaskIter!=null){
+                if(this._currentTaskIter.hasNext()){
+                    _current = this._currentTaskIter.next();
                     System.out.println("~Current Task: " + _current.getClass().getSimpleName());
                 }
             }

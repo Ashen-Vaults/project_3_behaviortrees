@@ -26,21 +26,29 @@ public class Sequence extends CompositeTask {
 
     @Override
     public boolean run() {
-        if(this._currentTask!=null){
+        if(this._currentTaskIter!=null){
+            
+            
             //if(this._currentTask.hasNext()){   
                 
                 //if the current task the last task in the list; we are done
-                //if(_current == myTasks.get(myTasks.size()-1)){
-                if(!this._currentTask.hasNext()){  
+                if(_current == myTasks.get(myTasks.size()-1)){
+                //if(!this._currentTaskIter.hasNext()){
                     //System.out.println("LAST TASK:" + _current.getClass().getSimpleName());
+                    //return true;
+                    System.out.println("Running:" + _current.getClass().getSimpleName()); 
+                    //return _current.run();                                      
                     return true;
                 }
 
                // if the current task's run return true, go to the next task
                 if(_current.run()){
                     System.out.println("Running:" + _current.getClass().getSimpleName());
-                    _current = this._currentTask.next();
+                    _current = this._currentTaskIter.next();
                     return true; //if the current task's run doesnt run, we are done
+               
+                
+                
                 }else{
                     return false;  
                 }
@@ -50,5 +58,24 @@ public class Sequence extends CompositeTask {
         //}
         System.out.println("Repeating: ");
         return false;
+        
+            
+          /*  
+          for(int i=0;i<=this.myTasks.size()-1;i++)
+          {
+              if(!this.myTasks.get(i).run()){
+                  
+                   return false;
+              }
+              System.out.println("Running: " + this.myTasks.get(i).getClass().getSimpleName());
+              
+              
+          }            
+            return true;
+     
+        }
+        */
+          
+             
     }
 }

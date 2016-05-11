@@ -24,10 +24,10 @@ public class TraverseLevel extends BehaviorTree {
         super(_agent);
         this._myTasks = new ArrayList<>();
         //this._myTasks.add(new MoveRight(_agent));
-        this._myTasks.add(new IsNearLedge(_agent));
-        this._myTasks.add(new MoveRight(_agent));
-        this._myTasks.add(new Jump(_agent));
-        this._myTasks.add(new IsNearLedge(_agent));
+      //  this._myTasks.add(new IsNearLedge(_agent));
+      //  this._myTasks.add(new MoveRight(_agent));
+     //   this._myTasks.add(new Jump(_agent));
+     //   this._myTasks.add(new IsNearLedge(_agent));
         this._myComposite = new Selector(_agent,this._myTasks);
     }
 
